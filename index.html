@@ -296,7 +296,7 @@
     </div>
 
     <script>
-        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx_EVEtgeJAkLGWCE9yTTI3EOIlV6J3wL_K2QZ0LcgHWZQgb1rm7TsiIfWBqlR28KHXQg/exec";
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwxapXNyvYu8c1Q1efHUcDyItqTlUWqciNPB_ppSEvRsxZu8g90iQ6XLOxR_0rddpbCog/exec";
         const TEACHER_PASS = "GuruCerdas#2026!Math";
 
         // DATA SOAL FORMATIF 3
@@ -595,28 +595,29 @@
             let timeFormatted = `${m}:${s}`;
 
             let record = {
-                name: currentStudent.name,
-                class: currentStudent.class,
-                time: timeFormatted,
-                pgkScore: pgkScore,
-                uraianScore: uraianScore,
-                finalScore: nilaiAkhir,
-                kategori: kategori,
-                date: new Date().toLocaleString("id-ID")
-            };
+    name: currentStudent.name,
+    class: currentStudent.class,
+    time: timeFormatted,
+    pgkScore: pgkScore,
+    uraianScore: uraianScore,
+    finalScore: nilaiAkhir,
+    kategori: kategori,
+    date: new Date().toLocaleString("id-ID")
+};
 
-            let records = JSON.parse(localStorage.getItem('quiz_records_f3') || '[]');
-            records.push(record);
-            localStorage.setItem('quiz_records_f3', JSON.stringify(records));
+let records = JSON.parse(localStorage.getItem('quiz_records_f3') || '[]');
+records.push(record);
+localStorage.setItem('quiz_records_f3', JSON.stringify(records));
 
-            if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL !== "https://script.google.com/macros/s/AKfycbwzClVVaKdVDDwAktg-a7R2hYcN6wAmLWP3XDoxakwpfiA4_02jLZFXYGfMib6a5RlPNQ/exec") {
-                fetch(GOOGLE_SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(record)
-                }).catch(error => console.error('Error pengiriman:', error));
-            }
+// LANGSUNG PANGGIL FETCH TANPA SYARAT PERBANDINGAN URL DUMMY
+if (GOOGLE_SCRIPT_URL) {
+    fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(record)
+    }).catch(error => console.error('Error pengiriman:', error));
+}
 
             document.getElementById('screen-quiz').classList.add('hidden');
             document.getElementById('screen-result').classList.remove('hidden');
