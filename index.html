@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kuis Interaktif - Kebun Jeruk Pak Andi (Formatif 3)</title>
+    <title>Kuis Interaktif - Kebun Jeruk Pak Andi (Formatif 2)</title>
     <style>
         :root {
             --primary-color: #2e7d32;
@@ -199,7 +199,7 @@
     <div class="container">
         <!-- STEP 1: IDENTITAS SISWA -->
         <div id="screen-intro">
-            <h2>Penilaian Formatif 3: Kebun Jeruk Pak Andi</h2>
+            <h2>Penilaian Formatif 2: Kebun Jeruk Pak Andi</h2>
             <p style="margin-top: 5px; color: #4a5568;">Isi data diri Anda terlebih dahulu untuk memulai pengerjaan kuis.</p>
             <br>
             <form onsubmit="startQuiz(event)">
@@ -246,7 +246,7 @@
         <!-- STEP 3: HASIL AKHIR SISWA -->
         <div id="screen-result" class="hidden">
             <div class="result-card">
-                <h2>Hasil Penilaian Formatif 3</h2>
+                <h2>Hasil Penilaian Formatif 2</h2>
                 <p>Terima kasih telah menyelesaikan kuis ini!</p>
                 
                 <div class="score-display" id="final-score">0</div>
@@ -264,7 +264,7 @@
 
         <!-- STEP 4: PORTAL GURU (REKAP DATA) -->
         <div id="screen-teacher" class="hidden">
-            <h2>🔑 Portal Guru - Rekapitulasi Data Hasil Kuis (Formatif 3)</h2>
+            <h2>🔑 Portal Guru - Rekapitulasi Data Hasil Kuis (Formatif 2)</h2>
             <p style="margin-bottom: 15px;">Data nilai seluruh siswa yang telah menyelesaikan kuis:</p>
 
             <button class="btn btn-primary" onclick="downloadExcel()" style="margin-bottom: 15px;">📥 Unduh Data Rekap (Excel/CSV)</button>
@@ -299,7 +299,7 @@
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwxapXNyvYu8c1Q1efHUcDyItqTlUWqciNPB_ppSEvRsxZu8g90iQ6XLOxR_0rddpbCog/exec";
         const TEACHER_PASS = "GuruCerdas#2026!Math";
 
-        // DATA SOAL FORMATIF 3
+        // DATA SOAL FORMATIF 2
         const quizData = [
             {
                 type: 'pgk',
@@ -549,7 +549,7 @@
             }
         }
 
-        // CALCULATE RESULT FORMATIF 3 (SKOR MAX 16)
+        // CALCULATE RESULT FORMATIF 2 (SKOR MAX 16)
         function calculateResult() {
             let pgkScore = 0; // max 12
             let uraianScore = 0; // max 4
@@ -699,14 +699,14 @@ if (GOOGLE_SCRIPT_URL) {
             let encodedUri = encodeURI(csvContent);
             let link = document.createElement("a");
             link.setAttribute("href", encodedUri);
-            link.setAttribute("download", "Rekap_Nilai_Formatif_3.csv");
+            link.setAttribute("download", "Rekap_Nilai_Formatif_2.csv");
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
         }
 
         function clearData() {
-            if (confirm("Apakah Anda yakin ingin menghapus data rekap nilai Formatif 3 pada browser ini?")) {
+            if (confirm("Apakah Anda yakin ingin menghapus data rekap nilai Formatif 2 pada browser ini?")) {
                 localStorage.removeItem('quiz_records_f3');
                 renderTeacherTable();
             }
